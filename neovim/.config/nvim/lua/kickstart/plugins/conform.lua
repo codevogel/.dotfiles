@@ -27,12 +27,21 @@ return {
          formatters_by_ft = {
             lua = { 'stylua' },
             json = { 'jq' },
+
             -- Conform can also run multiple formatters sequentially
             -- python = { "isort", "black" },
             --
             -- You can use a sub-list to tell conform to run *until* a formatter
             -- is found.
             -- javascript = { { "prettierd", "prettier" } },
+         },
+         formatters = {
+            beautysh = {
+               condition = function()
+                  -- check if the filename does not contain the word "_spec"
+                  return not vim.fn.expand('%:t'):match '.sh'
+               end,
+            },
          },
       },
    },
