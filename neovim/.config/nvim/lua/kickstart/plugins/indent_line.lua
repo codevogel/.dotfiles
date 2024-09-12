@@ -5,6 +5,6 @@ return {
       -- See `:help ibl`
       main = 'ibl',
       priority = 10000,
-      opts = { indent = { char = '▏' } },
+      opts = { indent = { char = '▏', tab_char = '╎' } },
    },
 }
