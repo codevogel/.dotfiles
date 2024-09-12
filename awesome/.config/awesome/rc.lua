@@ -14,6 +14,9 @@ local beautiful = require("beautiful")
 local naughty = require("naughty")
 local menubar = require("menubar")
 local hotkeys_popup = require("awful.hotkeys_popup")
+
+local xrandr = require("xrandr")
+
 -- Enable hotkeys help widget for VIM and other apps
 -- when client with a matching name is opened:
 require("awful.hotkeys_popup.keys")
@@ -73,10 +76,10 @@ modkey = "Mod4"
 awful.layout.layouts = {
    awful.layout.suit.tile,
    awful.layout.suit.tile.left,
-   awful.layout.suit.tile.bottom,
-   awful.layout.suit.tile.top,
+   -- awful.layout.suit.tile.bottom,
+   -- awful.layout.suit.tile.top,
    awful.layout.suit.floating,
-   -- awful.layout.suit.fair,
+   awful.layout.suit.fair,
    -- awful.layout.suit.fair.horizontal,
    -- awful.layout.suit.spiral,
    -- awful.layout.suit.spiral.dwindle,
@@ -367,7 +370,11 @@ globalkeys = gears.table.join(
    -- Menubar
    awful.key({ modkey }, "p", function()
       menubar.show()
-   end, { description = "show the menubar", group = "launcher" })
+   end, { description = "show the menubar", group = "launcher" }),
+
+   awful.key({ modkey, "Shift" }, "p", function()
+      xrandr.xrandr()
+   end, { description = "xrandr", group = "screen" })
 )
 
 clientkeys = gears.table.join(
@@ -587,6 +594,8 @@ client.connect_signal("request::titlebars", function(c)
       layout = wibox.layout.align.horizontal,
    })
 end)
+
+awful.screen.set_auto_dpi_enabled(true)
 
 -- Enable sloppy focus, so that focus follows mouse.
 client.connect_signal("mouse::enter", function(c)
