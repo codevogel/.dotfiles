@@ -1,0 +1,9 @@
+commands:
+   - alias: godot
+     command: |
+         /home/$(whoami)/work/godot/engine/Godot_v4.3-stable_linux.x86_64 -- -p & 
+         disown
+         wezterm start --always-new-process -- zsh -c "cd ~/work/tvt && nvim .; exec zsh" & 
+         disown
+         exit
+

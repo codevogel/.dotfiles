@@ -1,11 +1,14 @@
 # Add brew install dir to path
 export PATH=/home/linuxbrew/.linuxbrew/bin/:$PATH
 # Add commitizen to path
-export PATH=/home/kamiel/.local/bin/:$PATH
+export PATH=/home/codevogel/work/pls/release/:$PATH
+
+# Load the zsh function 'plz'
+echo 'fpath=(~/.zshfuncs "${fpath[@]}")' >> ~/.zshrc
+echo 'autoload -Uz plz' >> ~/.zshrc
 
 alias wezterm='flatpak run org.wezfurlong.wezterm'
 export EDITOR='nvim'
-alias pls='~/.dotfiles/pls/pls.sh'
 
 # Path to oh-my-zsh ( https://ohmyz.sh/ ) installation.
 export ZSH=~/.oh-my-zsh
@@ -30,3 +33,51 @@ eval "$(oh-my-posh init zsh --config ~/.poshthemes/patriksvensson.omp.json)"
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+fpath=(~/.zshfuncs "${fpath[@]}")
+autoload -Uz plz
+fpath=(~/.zshfuncs "${fpath[@]}")
+autoload -Uz plz
+fpath=(~/.zshfuncs "${fpath[@]}")
+autoload -Uz plz
+fpath=(~/.zshfuncs "${fpath[@]}")
+autoload -Uz plz
+fpath=(~/.zshfuncs "${fpath[@]}")
+autoload -Uz plz
+fpath=(~/.zshfuncs "${fpath[@]}")
+autoload -Uz plz
+fpath=(~/.zshfuncs "${fpath[@]}")
+autoload -Uz plz
+fpath=(~/.zshfuncs "${fpath[@]}")
+autoload -Uz plz
+fpath=(~/.zshfuncs "${fpath[@]}")
+autoload -Uz plz
+fpath=(~/.zshfuncs "${fpath[@]}")
+autoload -Uz plz
+fpath=(~/.zshfuncs "${fpath[@]}")
+autoload -Uz plz
+fpath=(~/.zshfuncs "${fpath[@]}")
+autoload -Uz plz
+fpath=(~/.zshfuncs "${fpath[@]}")
+autoload -Uz plz
+fpath=(~/.zshfuncs "${fpath[@]}")
+autoload -Uz plz
+fpath=(~/.zshfuncs "${fpath[@]}")
+autoload -Uz plz
+fpath=(~/.zshfuncs "${fpath[@]}")
+autoload -Uz plz
+fpath=(~/.zshfuncs "${fpath[@]}")
+autoload -Uz plz
+fpath=(~/.zshfuncs "${fpath[@]}")
+autoload -Uz plz
+fpath=(~/.zshfuncs "${fpath[@]}")
+autoload -Uz plz
+fpath=(~/.zshfuncs "${fpath[@]}")
+autoload -Uz plz
+fpath=(~/.zshfuncs "${fpath[@]}")
+autoload -Uz plz
+fpath=(~/.zshfuncs "${fpath[@]}")
+autoload -Uz plz
+fpath=(~/.zshfuncs "${fpath[@]}")
+autoload -Uz plz
+fpath=(~/.zshfuncs "${fpath[@]}")
+autoload -Uz plz
