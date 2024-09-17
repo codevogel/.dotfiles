@@ -21,5 +21,11 @@ require 'lazy-bootstrap'
 -- [[ Configure and install plugins ]]
 require 'lazy-plugins'
 
+-- start server for godot pipe
+local pipepath = vim.fn.stdpath 'cache' .. '/server.pipe'
+if not vim.loop.fs_stat(pipepath) then
+   vim.fn.serverstart(pipepath)
+end
+
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
