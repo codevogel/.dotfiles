@@ -3,9 +3,6 @@ export PATH=/home/linuxbrew/.linuxbrew/bin/:$PATH
 # Add commitizen to path
 export PATH=/home/codevogel/work/pls/release/:$PATH
 
-# Load the zsh function 'plz'
-echo 'fpath=(~/.zshfuncs "${fpath[@]}")' >> ~/.zshrc
-echo 'autoload -Uz plz' >> ~/.zshrc
 
 alias wezterm='flatpak run org.wezfurlong.wezterm'
 export EDITOR='nvim'
