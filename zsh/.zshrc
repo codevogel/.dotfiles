@@ -2,9 +2,9 @@
 export PATH=/home/linuxbrew/.linuxbrew/bin/:$PATH
 # Add commitizen to path
 export PATH=/home/codevogel/work/pls/release/:$PATH
+export PATH="$PATH:/opt/nvim-linux64/bin"
+export PATH="$PATH:/home/codevogel/.local/bin"
 
-
-alias wezterm='flatpak run org.wezfurlong.wezterm'
 export EDITOR='nvim'
 
 # Path to oh-my-zsh ( https://ohmyz.sh/ ) installation.
