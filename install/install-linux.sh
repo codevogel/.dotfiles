@@ -1,8 +1,8 @@
 #!/bin/bash
 
 # Check if installation order is correct
-source ~/.dotfiles/install/bash/dependency-check.sh
-install_dir="/home/$(whoami)/.dotfiles/install/bash"
+source ~/.dotfiles/install/dependency-check.sh
+install_dir="/home/$(whoami)/.dotfiles/install"
 files_from_config=$(get_files_from_config $install_dir)
 
 echo "🗨️ Checking installation order for packages in $install_dir..."
