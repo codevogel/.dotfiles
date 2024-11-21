@@ -11,8 +11,6 @@ return {
       handler_opts = {
          border = 'rounded',
       },
-      floating_window_off_x = 12,
-      floating_window_off_y = 4,
    },
    config = function(_, opts)
       require('lsp_signature').setup(opts)
