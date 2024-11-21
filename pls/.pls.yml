@@ -6,4 +6,13 @@ commands:
          wezterm start --always-new-process -- zsh -c "cd ~/runic-roots && nvim .; exec zsh" & 
          disown
          exit
+   - alias: s 
+     command: |
+          $1 &
+          disown
+   - alias: se
+     command: |
+          $1 & 
+          disown
+          exit
 
