@@ -15,4 +15,7 @@ commands:
           $1 & 
           disown
           exit
+   - alias: nvimconf
+     command: |
+          cd ~/.config/nvim/lua
 
