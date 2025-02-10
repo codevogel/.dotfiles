@@ -130,7 +130,7 @@ local palette = {
 ---------------------------
 -- Default awesome theme --
 ---------------------------
--- (added Kanagawa palette and JetBrains Mono)
+-- (added Kanagawa palette)
 
 local theme_assets = require("beautiful.theme_assets")
 local xresources = require("beautiful.xresources")
@@ -149,10 +149,10 @@ theme.bg_urgent = palette.roninYellow
 theme.bg_minimize = palette.sumiInk4
 theme.bg_systray = theme.bg_normal
 
-theme.fg_normal = "#aaaaaa"
-theme.fg_focus = "#ffffff"
-theme.fg_urgent = "#ffffff"
-theme.fg_minimize = "#ffffff"
+theme.fg_normal = palette.fujiGray
+theme.fg_focus = palette.fujiWhite
+theme.fg_urgent = palette.fujiWhite
+theme.fg_minimize = palette.fujiWhite
 
 theme.useless_gap = dpi(0)
 theme.border_width = dpi(1)
@@ -160,7 +160,7 @@ theme.border_normal = "#000000"
 theme.border_focus = "#535d6c"
 theme.border_marked = "#91231c"
 
--- There are other variable sets
+--- There are other variable sets
 -- overriding the default one when
 -- defined, the sets are:
 -- taglist_[bg|fg]_[focus|urgent|occupied|empty|volatile]
