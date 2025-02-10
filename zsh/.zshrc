@@ -8,6 +8,7 @@ export PATH="$PATH:/home/codevogel/.local/bin"
 export PATH="$PATH:/.local/bin"
 export PATH="$PATH:/home/codevogel/.local/share/nvim/mason/bin"
 export EDITOR='nvim'
+export PATH="$PATH:/home/codevogel/pyvenv/bin"
 
 # Path to oh-my-zsh ( https://ohmyz.sh/ ) installation.
 export ZSH=~/.oh-my-zsh
