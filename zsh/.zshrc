@@ -2,7 +2,7 @@
 export PATH=/home/linuxbrew/.linuxbrew/bin/:$PATH
 # Add commitizen to path
 export PATH=/home/codevogel/work/pls/release/:$PATH
-export PATH="$PATH:/opt/nvim-linux64/bin"
+export PATH="$PATH:/opt/nvim-linux-x86_64/bin"
 export PATH="$PATH:/home/codevogel/.local/bin"
 
 export PATH="$PATH:/.local/bin"
