@@ -24,14 +24,14 @@ There are a few reasons why you might want to use a setup like this:
 ### When should you *not* use this repository?
 
  - **If you are not a fan of tinkering:** This repository is likely not a one-size-fits-all solution to your problems. You will need to customize it to your own needs.
- - **If you are not familiar with WSL:** This repository is tailored to a Windows + WSL2 setup. If you are not familiar with WSL, you might find it hard to use this repository.
+ - **If you are not familiar with WSL:** This repository is tailored to a Linux Mint setup. AFAIK it works on WSL too, though not everything is as useful there.
  - **If you expect everything to work forever:** Software evolves, and so do the tools in this repository. You will need to keep your configuration files up-to-date, and potentially fix issues that arise from breaking changes in the tools you use.
  - **If you are not a ['smelly nerd' 😏](https://github.com/sherlock-project/sherlock/issues/2011#issue-2143280124)**
 
 ### When *would* you use (a setup similar to) this repository?
 
  - **If you work on multiple systems:** You can keep your configuration files in sync across all your systems. (Who hasn't tried to hit that one keyboard shortcut that only works on your personal system, or tried to use that one CLI tool that you forgot to install on your work laptop?)
- - **If you like to automate things:** You can automate the setup of your development environment. (It may take longer to set up your installation scripts, but there is a great satisfaction in just running `install/install.sh` and having everything set up and ready to go.)
+ - **If you like to automate things:** You can automate the setup of your development environment. (It may take longer to set up your installation scripts, but there is a great satisfaction in just running `install/install-linux.sh` and having everything set up and ready to go.)
  - **If you like to be on top of things:** You are ultimately responsible for your own setup, and are not reliant on others to keep your tools up-to-date. (This can be a double-edged sword)
  - **If you want to learn:** You can learn a lot about how your tools work, and how to automate your own setup.
  - **If you came here to ~steal my config~ be inspired:** Feel free to dig around in my .dotfiles and nab just the parts you like, I took inspiration from many-a-dotfile. Just promise to not attempt to monetize them.
@@ -42,13 +42,12 @@ Just know that you *will* need to invest some time to get everything set up the 
 
 A brief overview of how my setup in this repository works:
 
- - It expects you to use Windows 10 or later as your main operating system, with WSL2 as the UNIX-like environment.
- - The repository houses configuration files, and lives at the home directory of WSL (`~/.dotfiles`) on your systems. 
+ - The repository houses configuration files, and lives at the home directory (`~/.dotfiles`) on your system. 
  - The installation scripts in this repository set up your development environment by:
    - Installing the tools you need.
    - Setting up symlinks to the configuration files in this repository (leveraging GNU [stow](https://www.gnu.org/software/stow/))
    - Performing other tasks, such as installing fonts, adding programs to Windows' startup cycle, etc.
- - The installation script `/install/install.sh` is the global entry point for all installations. It runs the scripts `/install/bash/install-linux.sh` and `install/bash/install-windows.sh`, which in turn run all the scripts that are listed in (`install/bash/active.conf` and `install/powershell/active.conf`), in consecutive order.
+ - The installation script `/install/install-linux.sh` is the global entry point for all installations. It runs all the scripts that are listed in `install/active.conf`, in consecutive order.
  - A primitive dependency system is in place:
    - An installation script may depend on other installations to be run before it (e.g. we need `git` before we can `git clone`).
    - Before installing, the installation script scans all the files in its respective `active.conf` file line by line, and checks if they list any dependencies (using a line with the format `# Deps: <tool1>, <tool2>, etc...`), if they do, these must be listed with a prior install script.
@@ -60,15 +59,8 @@ A brief overview of how my setup in this repository works:
 
 > ⚠️ This repository is tailored to my own workflow, and you might not need everything in here. That is why I would recommend you to fork this repository and customize it to your own needs. I may add or remove configuration and tooling from this repository over time, and you may not want to keep up with those changes. By forking this repository, you can keep your own version of the configuration files, and cherry-pick the changes you want to keep up with. You can also [contribute](#contributing) useful additions or bugfixes to this repository by submitting pull requests.
 
-Simply cloning this repository won't be enough. Your system needs to know to use the configuration files listed in this repository. It also needs to install the related software. This is done automatically by running the `install/install.sh` script in this repository. This script will install both the Windows and Unix tooling, and set up the symlinks to the configuration files in this repository. You can configure exactly which install scripts run, or the order in which they run, by editing the `install/powershell/active.conf` (Windows tooling) and `install/bash/active.conf` (Unix tooling).
+Simply cloning this repository won't be enough. Your system needs to know to use the configuration files listed in this repository. It also needs to install the related software. This is done automatically by running the `install/install.sh` script in this repository. You can configure exactly which install scripts run, or the order in which they run, by editing the `install/active.conf`.
 
-
-### Requirements
-
- - Windows 10 or later, with [WSL](https://learn.microsoft.com/en-us/windows/wsl/install) installed (I use WSL2).
- - Your WSL shell uses a normal user, not the root user.
- - Your WSL default shell is `bash`. (This is the default shell in Ubuntu, so  you should be fine.)
- - [Git](https://git-scm.com/) installed on your Windows system.
 
 ### Installation
 
@@ -88,19 +80,13 @@ For an **as-is installation**, you can follow these steps:
 
 For a customized installation, you can alter the `install/install.sh` script to your liking.
 
- - **Example customization 1:** You only want to install the UNIX-side of the configuration.
-   - Alter `install/install.sh` so it no longer sources the `install/powershell/install-windows.ps1` script.
- - **Example customization 2:** You don't want to install Neovim.
+ - **Example customization 1:** You don't want to install Neovim.
    - Remove or comment out the `./apt/install-neovim.sh` line in `install/bash/active.conf`.
- - **Example customization 3:** You want to add a new tool to the Unix installation.
-   - Create a new bash script in (a sub-directory of) `install/bash/` (UNIX tooling) or `install/powershell/` (Windows tooling). (e.g. `echo #!/bin/bash >> ~/.dotfiles/install/bash/apt/install-foo.sh`)
+ - **Example customization 2:** You want to add a new tool to install.
+   - Create a new bash script in (a sub-directory of) `install`. (e.g. `echo #!/bin/bash >> ~/.dotfiles/install/bash/apt/install-foo.sh`)
    - Write the installation instructions for that script (e.g. `sudo apt-get foo -y`, then also perform any potential symlinks, etc.)
    - Add a line that says `# Deps: <tool1> <tool2> ...` to the script, listing the dependencies of the script. (ℹ️  Any dependencies listed here should be installed with an install script sharing the same name as the dependency (e.g. if `install-foo.sh` lists `bar` as a dependency, there should be an `install-bar.sh` script listed before `install-foo.sh` in the `active.conf` file.)
-   - Add the absolute or relative path (starting at `install/bash` or `install/powershell`) of the new installation script to the `active.conf` file.
- - **Example customization 4:** You want to remove AutoHotkey from the Windows installation.
-   - Remove or comment out the `./chocos/install/install-ahk.sh` line in `install/install.sh`.
-   - Optional: Remove the related install script from the repository.
-   - Recommended: `chmod +x` and then run the `install/bash/install-windows.sh` script to verify that no other scripts depend on the removed script. (The install script runs a dependency check before installing anything.)
+   - Add the absolute or relative path of the new installation script to the `active.conf` file.
 
 ### Updating and versioning
 
