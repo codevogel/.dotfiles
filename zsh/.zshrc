@@ -90,3 +90,5 @@ print(json.dumps(j, indent=2))' > compile_commands.json
 alias ue4='echo Please use ue instead.'
 alias ue5='echo Please use ue instead.'
 # End ue4cli wrapper
+
+export PATH="$PATH:~/work/pls"
