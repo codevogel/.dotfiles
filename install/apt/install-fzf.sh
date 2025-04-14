@@ -1,2 +1,2 @@
 #!/bin/bash
-sudo apt install fzf -Y
+sudo apt install fzf -y
