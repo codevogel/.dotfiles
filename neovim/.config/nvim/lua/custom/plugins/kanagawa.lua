@@ -26,6 +26,11 @@ return {
                -- dim gutter background for treesitter-context line numbers
                TreesitterContextLineNumber = { italic = true, bg = theme.ui.bg_dim, fg = theme.ui.nontext },
 
+               DiagnosticUnderlineError = { sp = theme.diag.error, undercurl = true },
+               DiagnosticUnderlineWarn = { sp = theme.diag.warning },
+               DiagnosticUnderlineInfo = { sp = theme.diag.info },
+               DiagnosticUnderlineHint = { sp = theme.diag.hint },
+
                -- modern Telescope block-look
                TelescopeTitle = { fg = theme.ui.special, bold = true },
                TelescopePromptNormal = { bg = theme.ui.bg_p1 },
