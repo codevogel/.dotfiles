@@ -57,9 +57,7 @@ local window = {
 	hide_tab_bar_if_only_one_tab = true,
 }
 
-local conf = {
-	term = "wezterm",
-}
+local conf = { term = "wezterm" }
 mergeTable(style, conf)
 mergeTable(window, conf)
 
