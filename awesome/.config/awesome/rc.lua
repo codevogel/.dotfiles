@@ -16,6 +16,8 @@ local menubar = require("menubar")
 local hotkeys_popup = require("awful.hotkeys_popup")
 
 local xrandr = require("xrandr")
+local hostname = io.popen("hostname"):read("*l")
+local show_battery_widget = (hostname == "codevogel-GLU")
 local battery_widget = require("battery-widget")
 
 -- Enable hotkeys help widget for VIM and other apps
@@ -145,8 +147,6 @@ mykeyboardlayout = awful.widget.keyboardlayout()
 -- Create a textclock widget
 mytextclock = wibox.widget.textclock()
 
-local battery_widget = require("battery-widget")
-
 -- Create a wibox for each screen and add it
 local taglist_buttons = gears.table.join(
    awful.button({}, 1, function(t)
@@ -261,7 +261,7 @@ awful.screen.connect_for_each_screen(function(s)
       { -- Right widgets
          layout = wibox.layout.fixed.horizontal,
          mykeyboardlayout,
-         battery_widget({}),
+         show_battery_widget and battery_widget({}) or nil,
          wibox.widget.systray(),
          mytextclock,
          s.mylayoutbox,
