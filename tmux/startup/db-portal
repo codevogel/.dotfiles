@@ -1,0 +1,40 @@
+#!/bin/zsh
+
+## Note: This script expects 1-indexed window panes. Add this to your ~/.tmux.conf:
+## set -g base-index 1
+## setw -g pane-base-index 1
+
+# Set session name
+SESSION_NAME="web-portal"
+
+# Check if the session already exists
+tmux has-session -t $SESSION_NAME 2>/dev/null
+
+# If the session doesn't exist, create it
+if [ $? != 0 ]; then
+  # Create a new session with a first window named 'Code' for code editing
+  tmux new-session -s $SESSION_NAME -c ~/work/svelte-db-portal/app -d -n 'Code'
+  # Create a second window named 'Git' for lazygit
+  tmux new-window -t $SESSION_NAME:2 -c ~/work/svelte-db-portal/ -n 'Git'
+  # Create a third window named 'Do' for arbitrary tasks
+  tmux new-window -t $SESSION_NAME:3 -c ~/work/svelte-db-portal/app -n 'Do'
+  # Create a fourth window 'Text' for writing the tutorial
+  tmux new-window -t $SESSION_NAME:4 -c ~/work/svelte-db-portal/tutorial -n 'Text'
+  # Create a fifth window 'Server' for running the server
+  tmux new-window -t $SESSION_NAME:5 -c ~/work/svelte-db-portal/app -n 'Server'
+
+  # Wait for a moment to ensure the windows are created
+   sleep 0.75
+
+  tmux send-keys -t "$SESSION_NAME:1" 'nvim .' Enter
+  tmux send-keys -t "$SESSION_NAME:2" 'lazygit' Enter
+  tmux send-keys -t "$SESSION_NAME:3" 'sudo /opt/lampp/xampp start' Enter
+  tmux send-keys -t "$SESSION_NAME:4" 'nvim .' Enter
+  tmux send-keys -t "$SESSION_NAME:5" 'npm run dev' Enter
+  
+  # Select the 'Do' window
+  tmux select-window -t $SESSION_NAME:3
+fi
+
+# Attach to the session
+tmux attach-session -t $SESSION_NAME
