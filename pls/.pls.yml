@@ -24,6 +24,9 @@ commands:
    - alias: start-web-portal
      command: |
           ~/startup/web-portal
+   - alias: start-db-portal
+     command: |
+          ~/startup/db-portal
    - alias: kill
      command: |
           tmux kill-session
