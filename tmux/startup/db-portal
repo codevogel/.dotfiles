@@ -5,7 +5,7 @@
 ## setw -g pane-base-index 1
 
 # Set session name
-SESSION_NAME="web-portal"
+SESSION_NAME="db-portal"
 
 # Check if the session already exists
 tmux has-session -t $SESSION_NAME 2>/dev/null
