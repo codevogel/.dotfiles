@@ -18,10 +18,9 @@ commands:
    - alias: nvimconf
      command: |
           cd ~/.config/nvim/lua
-   - alias: start-default
+   - alias: dev
      command: |
-          ~/startup/default $1
-   - alias: start-web-portal
+          ~/startup/default
      command: |
           ~/startup/web-portal
    - alias: start-db-portal
