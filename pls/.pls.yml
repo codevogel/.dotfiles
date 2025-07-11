@@ -21,11 +21,9 @@ commands:
    - alias: dev
      command: |
           ~/startup/default
+   - alias: dev-sv
      command: |
-          ~/startup/web-portal
-   - alias: start-db-portal
-     command: |
-          ~/startup/db-portal
+          ~/startup/svelte
    - alias: kill
      command: |
           tmux kill-session
