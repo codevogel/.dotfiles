@@ -33,3 +33,11 @@ commands:
    - alias: clone-x
      command: |
           git clone git@github.com:$1/$2.git
+   - alias: keeb-split
+     command: |
+          sudo cat /etc/default/keyboard-split | sudo tee /etc/default/keyboard > /dev/null
+          sudo dpkg-reconfigure keyboard-configuration
+   - alias: keeb-laptop
+     command: |
+          sudo cat /etc/default/keyboard-laptop | sudo tee /etc/default/keyboard > /dev/null
+          sudo dpkg-reconfigure keyboard-configuration
