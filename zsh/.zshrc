@@ -26,6 +26,7 @@ COMPLETION_WAITING_DOTS="true"
 
  # remind to update when it's time
 zstyle ':omz:update' mode reminder
+zstyle ':completion:*' menu select
 
 eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 eval "$(oh-my-posh init zsh --config ~/.poshthemes/patriksvensson.omp.json)"
