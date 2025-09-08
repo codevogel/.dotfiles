@@ -57,3 +57,6 @@ vim.keymap.set('n', '<down>', ':m+<CR>', { desc = 'Move line down' })
 vim.keymap.set('n', '<left>', '0', { desc = 'Move to start of line' })
 vim.keymap.set('n', '<right>', '$', { desc = 'Move to end of line' })
 vim.keymap.set('n', '<leader>;', ':Telescope emoji<CR>', { desc = 'Open Emoji picker with Telescope' })
+
+-- Open oil.nvim
+vim.keymap.set('n', '<leader>o', ':Oil<CR>', { desc = 'Open Oil.nvim file explorer' })
