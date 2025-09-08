@@ -33,7 +33,7 @@ if [ $? != 0 ]; then
   tmux new-window -t $SESSION_NAME:4 -c "$CWD/app" -n 'Server'
 
   # Wait for a moment to ensure the windows are created
-   sleep 0.5
+sleep 1.5
 
   tmux send-keys -t "$SESSION_NAME:1" 'nvim .' Enter
   tmux send-keys -t "$SESSION_NAME:2" 'lazygit' Enter
