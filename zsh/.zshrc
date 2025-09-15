@@ -12,8 +12,8 @@ export PATH="$PATH:/home/codevogel/pyvenv/bin"
 
 # Path to oh-my-zsh ( https://ohmyz.sh/ ) installation.
 export ZSH=~/.oh-my-zsh
-source $ZSH/oh-my-zsh.sh
 plugins=(git z)
+source $ZSH/oh-my-zsh.sh
 
 # Enable command auto-correction.
 ENABLE_CORRECTION="true"
