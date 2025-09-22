@@ -1,11 +1,4 @@
 commands:
-   - alias: godot
-     command: |
-         /home/$(whoami)/work/godot/engine/Godot_v4.3-stable_linux.x86_64 -- -p & 
-         disown
-         wezterm start --always-new-process -- zsh -c "cd ~/runic-roots && nvim .; exec zsh" & 
-         disown
-         exit
    - alias: s 
      command: |
           $1 &
@@ -24,6 +17,9 @@ commands:
    - alias: dev-sv
      command: |
           ~/startup/svelte
+   - alias: dev-gd
+     command: |
+          ~/startup/godot
    - alias: kill
      command: |
           tmux kill-session
