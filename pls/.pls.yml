@@ -37,3 +37,6 @@ commands:
      command: |
           sudo cat /etc/default/keyboard-laptop | sudo tee /etc/default/keyboard > /dev/null
           sudo dpkg-reconfigure keyboard-configuration
+   - alias: bright
+     command: |
+          sudo brightnessctl s $1
