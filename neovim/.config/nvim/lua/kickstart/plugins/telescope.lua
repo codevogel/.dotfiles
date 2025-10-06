@@ -73,17 +73,68 @@ return {
          pcall(require('telescope').load_extension, 'fzf')
          pcall(require('telescope').load_extension, 'ui-select')
 
+         local exclude_globs = {
+            -- Exclude Git metadata
+            '!**/.git/*',
+
+            -- Image files
+            '!*.png',
+            '!*.jpg',
+            '!*.jpeg',
+            '!*.gif',
+            '!*.ico',
+
+            -- Document files
+            '!*.pdf',
+
+            -- Archives
+            '!*.zip',
+
+            -- Executables and binaries
+            '!*.exe',
+            '!*.dll',
+            '!*.dylib',
+            '!*.so',
+            '!*.wasm',
+
+            -- Godot specific files
+            '!*.import',
+            '!*.uid',
+            '!*.tscn',
+            '!*.scn',
+            '!*.res',
+            '!*.depren',
+            '!*.gdextension',
+            '!**/addons/**',
+
+            -- Fonts
+            '!*.ttf',
+
+            -- 3D Models and Assets
+            '!*.glb',
+            '!*.obj',
+
+            -- Mac/OS specific property lists
+            '!*.plist',
+         }
+
+         -- Build the find_command array for Telescope
+         local find_command = { 'rg', '--files', '--hidden' }
+         for _, glob in ipairs(exclude_globs) do
+            table.insert(find_command, '--glob')
+            table.insert(find_command, glob)
+         end
+
          -- See `:help telescope.builtin`
          local builtin = require 'telescope.builtin'
          vim.keymap.set('n', '<leader>sh', builtin.help_tags, { desc = '[S]earch [H]elp' })
          vim.keymap.set('n', '<leader>sk', builtin.keymaps, { desc = '[S]earch [K]eymaps' })
-         vim.keymap.set('n', '<leader>sf', builtin.find_files, { desc = '[S]earch [F]iles' })
-         vim.keymap.set('n', '<leader>sG', function()
+         vim.keymap.set('n', '<leader>sf', function()
             builtin.find_files {
-               find_command = { 'find', '.', '-type', 'f', '-name', '*.gd' },
-               prompt_title = 'Find Godot Scripts',
+               hidden = true,
+               find_command = find_command,
             }
-         end, { desc = 'Find Godot Scripts' })
+         end, { desc = '[S]earch [F]iles' })
          vim.keymap.set('n', '<leader>ss', builtin.builtin, { desc = '[S]earch [S]elect Telescope' })
          vim.keymap.set('n', '<leader>sw', builtin.grep_string, { desc = '[S]earch current [W]ord' })
          vim.keymap.set('n', '<leader>sg', builtin.live_grep, { desc = '[S]earch by [G]rep' })
