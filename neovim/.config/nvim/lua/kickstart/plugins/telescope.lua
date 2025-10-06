@@ -105,7 +105,6 @@ return {
             '!*.res',
             '!*.depren',
             '!*.gdextension',
-            '!**/addons/**',
 
             -- Fonts
             '!*.ttf',
@@ -117,6 +116,12 @@ return {
             -- Mac/OS specific property lists
             '!*.plist',
          }
+
+         local cwd_name = vim.fn.fnamemodify(vim.fn.getcwd(), ':t')
+         -- Conditionally add addons exclusion
+         if cwd_name ~= 'godot_doctor' then
+            table.insert(exclude_globs, '!**/addons/**')
+         end
 
          -- Build the find_command array for Telescope
          local find_command = { 'rg', '--files', '--hidden' }
@@ -165,6 +170,8 @@ return {
          vim.keymap.set('n', '<leader>sn', function()
             builtin.find_files { cwd = vim.fn.stdpath 'config' }
          end, { desc = '[S]earch [N]eovim files' })
+
+         vim.keymap.set('n', '<leader>st', '<cmd>TodoTelescope<cr>', { desc = 'Search TODOs' })
       end,
    },
 }
