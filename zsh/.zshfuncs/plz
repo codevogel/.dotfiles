@@ -1,0 +1,5 @@
+cmd="$(pls "$1" -p)"
+execute_command() { # Use a function so we can use parameterized commands as well
+   eval "$cmd"
+}
+execute_command ${@:2}

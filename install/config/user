@@ -1,0 +1,2 @@
+useradd -m codevogel
+passwd codevogel
