@@ -26,5 +26,6 @@ source $ZSH/oh-my-zsh.sh
 # Oh My Zsh end
 
 # Oh My Posh
-eval "$(oh-my-posh init zsh)"
+export PATH=$PATH:/home/codevogel/.local/bin
+eval "$(oh-my-posh init zsh --config $HOME/.poshthemes/patriksvensson.omp.json)"
 # Oh My Posh end
