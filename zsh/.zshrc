@@ -36,3 +36,7 @@ export PYENV_ROOT="$HOME/.pyenv"
 eval "$(pyenv init - bash)"
 #Pyenv end
 
+#pls start
+export PATH=$HOME/work/pls/:$PATH
+#pls end
+
