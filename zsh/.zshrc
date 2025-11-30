@@ -25,11 +25,6 @@ plugins=(git)
 source $ZSH/oh-my-zsh.sh
 # Oh My Zsh end
 
-# Oh My Posh
-export PATH=$PATH:/home/codevogel/.local/bin
-eval "$(oh-my-posh init zsh --config $HOME/.poshthemes/patriksvensson.omp.json)"
-# Oh My Posh end
-
 # Pyenv start
 export PYENV_ROOT="$HOME/.pyenv"
 [[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
@@ -50,3 +45,8 @@ export NVM_DIR="$HOME/.nvm"
 export DOTNET_ROOT=$HOME/.dotnet
 export PATH=$PATH:$DOTNET_ROOT:$DOTNET_ROOT/tools
 #dotnet end
+
+# Oh My Posh
+export PATH=$PATH:/home/codevogel/.local/bin
+eval "$(oh-my-posh init zsh --config $HOME/.poshthemes/patriksvensson.omp.json)"
+# Oh My Posh end
